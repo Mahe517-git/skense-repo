@@ -1,0 +1,39 @@
+<!-- <h3>Snehith Reddy </h3> -->
+<div class="skn-header">
+    <div class="skn-header-logo-bar">
+        <a routerLink="/analyst" *ngIf="router.url === '/analyst/reports'"><img src="../../assets/images/header-arrow-left.svg"/></a>
+        <a (click)="reloadCurrentPage()" *ngIf="displayList == 'false'"><img src="../../assets/images/header-arrow-left.svg"/></a>
+        <img src="../../assets/images/skense-logo.svg" class="skn-header-logo"/>
+        <img src="../../assets/images/nestle-logo.svg" class="skn-header-cobranding"/>
+    </div>
+    <div class="skn-header-nav" *ngIf="displayList != 'false'">
+        <a routerLink="/analyst" class="skn-header-nav-navitem-active" *ngIf="router.url === '/analyst'">My Work</a>
+        <a routerLink="/analyst" class="skn-header-nav-navitem" *ngIf="router.url != '/analyst'">My Work</a>
+        <a routerLink="/analyst/reports" class="skn-header-nav-navitem" *ngIf="router.url != '/analyst/reports'">Reports</a>
+        <a routerLink="/analyst/reports" class="skn-header-nav-navitem-active" *ngIf="router.url === '/analyst/reports'">Reports</a>
+    </div>
+    <div class="skn-header-nav" *ngIf="displayList == 'false'">
+        <a class="skn-header-nav-navitem">ID {{documentId}}:</a>
+        <div class="dropdown skn-header-nav-dropdown">
+            <button class="btn dropdown-toggle skn-header-nav-navitem-active" type="button" data-bs-toggle="dropdown" aria-expanded="false">Insurance Policy <i class="bi bi-chevron-down ms-2"></i></button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Insurance Policy</a></li>
+              <li><a class="dropdown-item">Insurance Policy</a></li>
+              <li><a class="dropdown-item">Insurance Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="dropdown skn-header-profile">
+        <button class="btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="me-3">
+                <div class="skn-header-profile-name">Name Surname</div>
+                <div class="skn-header-profile-role">Role Name</div>
+            </div>
+            <img src="../../assets/images/profile-icon.svg"/>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/analyst">Switch roles</a></li>
+          <li><a class="dropdown-item" routerLink="/analyst">Logout</a></li>
+        </ul>
+    </div>
+</div>
