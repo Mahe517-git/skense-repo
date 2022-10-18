@@ -7,8 +7,8 @@
         <img src="../../assets/images/nestle-logo.svg" class="skn-header-cobranding"/>
     </div>
     <div class="skn-header-nav" *ngIf="displayList != 'false'">
-        <a routerLink="/analyst" class="skn-header-nav-navitem-active" *ngIf="router.url === '/analyst'">My Work</a>
-        <a routerLink="/analyst" class="skn-header-nav-navitem" *ngIf="router.url != '/analyst'">My Work</a>
+        <a routerLink="/analyst/my-work" class="skn-header-nav-navitem-active" *ngIf="router.url === '/analyst/my-work'">My Work</a>
+        <a routerLink="/analyst/my-work" class="skn-header-nav-navitem" *ngIf="router.url != '/analyst/my-work'">My Work</a>
         <a routerLink="/analyst/reports" class="skn-header-nav-navitem" *ngIf="router.url != '/analyst/reports'">Reports</a>
         <a routerLink="/analyst/reports" class="skn-header-nav-navitem-active" *ngIf="router.url === '/analyst/reports'">Reports</a>
     </div>
@@ -26,8 +26,8 @@
     <div class="dropdown skn-header-profile">
         <button class="btn dropdown-toggle d-flex align-items-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="me-3">
-                <div class="skn-header-profile-name">Name Surname</div>
-                <div class="skn-header-profile-role">Role Name</div>
+                <div class="skn-header-profile-name">{{userName}}</div>
+                <div class="skn-header-profile-role">Analyst</div>
             </div>
             <img src="../../assets/images/profile-icon.svg"/>
         </button>

@@ -1,11 +1,25 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
+const APIEndpoint = environment.APIEndpoint;
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
-  constructor(private httpClient:HttpClient) { }
+  httpOptions: any;
+  constructor(private httpClient:HttpClient) {
+    this.httpOptions = {
+      headers: new HttpHeaders({
+        'Access-Control-Allow-Origin': '*'
+      }),
+      withCredentials: true
+    };
+   }
+ 
+  login(payload:any){
+    return this.httpClient.post(APIEndpoint + '/users/authenticate/v1', payload,this.httpOptions);
+  }
 
   saveNewUser(payload:any){
    return this.httpClient.post('http://localhost:3000/signup',payload)

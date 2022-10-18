@@ -1,0 +1,329 @@
+<div class="skn-top-filterbar" *ngIf="displayList == true">
+
+    <div>
+        <div class="dropdown skn-top-filterbar-item-select">
+            <div class="skn-top-filterbar-item-label">Filter by project:</div>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Demo project <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Demo project</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <div class="dropdown skn-top-filterbar-item-select">
+            <div class="skn-top-filterbar-item-label">Filter by assignment:</div>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Assigned to my team <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">Assigned to me</a></li>
+              <li><a class="dropdown-item">Assigned to my team</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div>
+        <div class="dropdown skn-top-filterbar-item-select">
+            <div class="skn-top-filterbar-item-label">Filter by status:</div>
+            <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              All <i class="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item">All</a></li>
+              <li><a class="dropdown-item">In Progress</a></li>
+              <li><a class="dropdown-item">Pending Review</a></li>
+              <li><a class="dropdown-item">Pending QC</a></li>
+              <li><a class="dropdown-item">In Queue</a></li>
+              <li><a class="dropdown-item">Completed</a></li>
+              <li><a class="dropdown-item">Failed</a></li>
+              <li><a class="dropdown-item">Rejected</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div class="skn-table-cnt" *ngIf="displayList == true">
+    <table datatable class="skn-table">
+        <thead>
+            <tr>
+                <th>Document ID</th>
+                <th>Document Name</th>
+                <th>Assignee</th>
+                <th>Document Type</th>
+                <th>Created On</th>
+                <th>Assigned On</th>
+                <th>Last Updated On</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of sknList;" (click)="displayCanvas(data.documentId)">
+                <td>{{data.documentId}}<a><img src="../../assets/images/copy-icon.svg" class="ms-3 skn-td-copy-icon"></a>
+                    <span class="badge ms-3 skn-status-badge-rejected" *ngIf="data.status == 'Rejected'">Rejected</span>
+                    <span class="badge ms-3 skn-status-badge-failed" *ngIf="data.status == 'Failed'">Failed</span>
+                    <span class="badge ms-3 skn-status-badge-completed" *ngIf="data.status == 'Completed'">Completed</span>
+                    <span class="badge ms-3 skn-status-badge-inqueue" *ngIf="data.status == 'In Queue'">In Queue</span>
+                    <span class="badge ms-3 skn-status-badge-pendingqc" *ngIf="data.status == 'Pending QC'">Pending QC</span>
+                    <span class="badge ms-3 skn-status-badge-inprogress" *ngIf="data.status == 'In Progress'">In Progress</span>
+                </td>
+                <td>{{data.documentName}}</td>
+                <td>{{data.assignee}}</td>
+                <td>{{data.documentType}}</td>
+                <td>{{data.createdOn}}</td>
+                <td>{{data.assignedOn}}</td>
+                <td>{{data.lastUpdatedOn}}</td>
+            </tr>
+        </tbody>
+    </table>
+<!--     
+    <table datatable class="row-border hover">
+        <thead>
+            <tr>
+                <th>Column Name</th>
+ 
+                <th>Selected Rules</th>
+ 
+                <th>Map Rules</th>
+            </tr>
+        </thead>
+ 
+        <tbody>
+            <tr *ngFor="let post of sknList">
+                <td>{{ post.documentId }}</td>
+ 
+                <td>NA
+                </td>
+ 
+                <td>Test</td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>
+
+<!-- ====================================================== List_View-Ends-Here ======================================================== -->
+<div class="skn-review-body" *ngIf="displayList != true">
+    <div class="skn-review-components-cnt">
+
+        <div class="skn-review-thumbnails-container">
+            <div class="skn-review-thumbnails-title"><img src="../../assets/images/icon-thumbnails.svg" class="me-2"/> Page 1 of 8</div>
+            <div class="skn-review-thumbnails">
+
+                <div class="thumbnail-active">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">1</div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">2</div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">3</div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">4</div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">5</div>
+                </div>
+        
+                <div class="thumbnail">
+                    <img src="../../assets/images/page-thumb.jpg" class="thumbnail-img"/>
+                    <div class="thumbnail-number">6</div>
+                </div>
+        
+            </div>
+        </div>
+        <!-- ================================================= thumbnails-ends-here ================================================== -->
+
+        <div class="skn-review-preview-cnt">
+            <!-- <img src="../../assets/images/placeholder-page.jpg" class="w-100"/> -->
+            <canvas #myCanvas height="1000" width="1000"> </canvas>
+        </div>
+        <!-- =============================================== preview-cnt-ends-here ================================================= -->
+
+        <div class="skn-review-controlls">
+            <button type="button"><img src="../../assets/images/zoom-in.svg"></button>
+            <button type="button"><img src="../../assets/images/zoom-out.svg"></button>
+            <button type="button"><img src="../../assets/images/external-link.svg"></button>
+        </div>
+        <!-- ================================================== controlls-ends-here =================================================== -->
+
+        <div class="skn-review-tabs-cnt">
+
+            <nav class="skn-review-tabs">
+                <div class="nav nav-tabs" role="tablist">
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#all" type="button" role="tab" aria-selected="true">All</button>
+                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#mandatory" type="button" role="tab" aria-selected="false">Mandatory<span class="badge rounded-circle ms-2 skn-tab-badge-primary">1</span></button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#high-confidence" type="button" role="tab" aria-selected="false">High Confidence<div class="ms-2 skn-tab-badge-success"></div></button>
+                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#low-confidence" type="button" role="tab" aria-selected="false">Low Confidence<div class="ms-2 skn-tab-badge-warning"></div></button>
+                </div>
+            </nav>
+
+            <div class="tab-content skn-tab-content">
+                <div class="tab-pane fade show active" id="all" role="tabpanel" tabindex="0">
+
+                    <div class="skn-fields-cnt">
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Number</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="ABC01234567" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Name</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Naresh" class="skn-attr-medium-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Status</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Active" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Line of Business</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Insurance" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Premium Amount *</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="" class="skn-input">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Coverage</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="All Critical Care" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Summary</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <textarea rows="10" placeholder="This schedule, policy terms andconditions and endoresements shall beread together and words of expression to which a specific meaning has been attached to any part of the LIC health insurance policy. Any ammendments/" class="skn-attr-medium-cnf"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="mandatory" role="tabpanel" tabindex="0">
+
+                    <div class="skn-fields-cnt">
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Premium Amount *</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="" class="skn-input">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="high-confidence" role="tabpanel" tabindex="0">
+
+                    <div class="skn-fields-cnt">
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Number</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="ABC01234567" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Status</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Active" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Line of Business</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Insurance" class="skn-attr-high-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Coverage</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="All Critical Care" class="skn-attr-high-cnf">
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="tab-pane fade" id="low-confidence" role="tabpanel" tabindex="0">
+
+                    <div class="skn-fields-cnt">
+
+                        <div class="skn-review-fields-note">Fields marked with <img src="../../assets/images/repeat.svg" class="mx-2"/> have been changed</div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Account Name</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <input type="text" placeholder="Naresh" class="skn-attr-medium-cnf">
+                        </div>
+
+                        <div class="skn-fieldset">
+                            <label for="" class="skn-field-label">Summary</label>
+                            <img src="../../assets/images/repeat-yellow-bg.svg" class="skn-field-label-icon"/>
+                            <textarea rows="10" placeholder="This schedule, policy terms andconditions and endoresements shall beread together and words of expression to which a specific meaning has been attached to any part of the LIC health insurance policy. Any ammendments/" class="skn-attr-medium-cnf"></textarea>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="skn-review-tabs-footer">
+
+                <div class="skn-review-check">
+                    <input class="form-check-input skn-review-check-input" type="checkbox" value="" id="checkbox">
+                    <label class="skn-review-check-label" for="checkbox">
+                        QC REVIEW
+                    </label>
+                </div>
+
+                <div class="btn-group skn-review-split-dropdown">
+                    <button type="button" class="skn-outline-btn">SAVE</button>
+                    <button type="button" class="skn-outline-split-btn dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bi bi-chevron-down"></i>
+                        <span class="visually-hidden">Toggle Dropdown</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                    <li><a class="dropdown-item">SAVE</a></li>
+                    <li><a class="dropdown-item">REJECT</a></li>
+                    </ul>
+                </div>
+
+                <button type="button" class="skn-outline-btn">REJECT</button>
+
+                <button type="button" class="skn-disabled-btn" data-bs-toggle="modal" data-bs-target="#exampleModal">SUBMIT</button>
+
+            </div>
+
+        </div>
+        <!-- ============================================================== tabs-ends-here ================================================================== -->
+
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+        <div class="modal-body">
+            <input type="text" placeholder="1,00,000" class="skn-input">
+        </div>
+    </div>
+    </div>
+</div>
